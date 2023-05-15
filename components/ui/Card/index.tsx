@@ -12,8 +12,7 @@ const Card: React.FC = () => {
       <div className="mt-2">
         <dl>
           <div>
-            <dt className="sr-only">Price</dt>
-
+            <dt className="sr-only">Rating</dt>
             <dd className="text-sm text-gray-500">4.5/5</dd>
           </div>
 
