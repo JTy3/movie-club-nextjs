@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <div>
       <HeaderNav />
-
       <section>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
@@ -70,16 +69,28 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mx-auto max-w-screen-xl px-4 pb-16 lg:flex lg:items-center h-auto">
+          <div className="mx-auto max-w-screen-xl px-4 pb-16 h-auto">
             <Swiper
-              slidesPerView={3}
-              spaceBetween={30}
+              slidesPerView={1}
+              spaceBetween={10}
               freeMode={true}
               pagination={{
                 clickable: true,
               }}
               modules={[FreeMode, Pagination]}
               className="mySwiper"
+              breakpoints={{
+                // when window width is >= 480px
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+                // when window width is >= 640px
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 40,
+                },
+              }}
             >
               <SwiperSlide>
                 <Card></Card>

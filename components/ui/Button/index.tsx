@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClass =
-  "inline-block rounded border border-red-600 bg-red-600 px-12 py-3 text-sm font-medium";
+  "inline-block rounded border border-red-600 bg-red-600 p-2 lg:px-12 lg:py-3 text-sm font-medium";
 
 const Button: React.FC<ButtonProps> = (props) => {
   const { variant, children, ...restProps } = props;
