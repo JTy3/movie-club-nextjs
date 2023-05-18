@@ -1,5 +1,6 @@
 import { Button } from "../ui";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { UserIcon } from "@heroicons/react/24/outline";
 
 const HeaderNav: React.FC = () => {
   const { data: session } = useSession();
@@ -13,15 +14,7 @@ const HeaderNav: React.FC = () => {
             type="button"
           >
             <span className="sr-only">Account</span>
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-            </svg>
+            <UserIcon className="h-6 w-6" />
           </button>
         </div>
 
