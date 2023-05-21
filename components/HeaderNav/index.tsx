@@ -1,6 +1,7 @@
 import { Button } from "../ui";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { UserIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const HeaderNav: React.FC = () => {
   const { data: session } = useSession();
@@ -27,19 +28,25 @@ const HeaderNav: React.FC = () => {
 
         <nav
           aria-label="Site Nav"
-          className="hidden items-center justify-center gap-8 text-sm font-medium lg:flex lg:w-0 lg:flex-1"
+          className="hidden items-center justify-center gap-8 text-sm font-medium lg:flex"
         >
           {session ? (
             <a className="text-gray-900" href="/app">
               Dashboard
             </a>
           ) : null}
-          <a className="text-gray-900" href="">
+          <Link className="text-gray-900" href={`/`}>
+            Home
+          </Link>
+          <Link className="text-gray-900" href={`/how-it-works`}>
+            How it works
+          </Link>
+          <Link className="text-gray-900" href={`/movies`}>
             Movies
-          </a>
-          <a className="text-gray-900" href="">
+          </Link>
+          <Link className="text-gray-900" href={`/tv-shows`}>
             TV Shows
-          </a>
+          </Link>
         </nav>
 
         <div className="items-center gap-4">
@@ -62,12 +69,15 @@ const HeaderNav: React.FC = () => {
               Dashboard
             </a>
           ) : null}
-          <a className="shrink-0 px-4 text-gray-900" href="/movies">
+          <Link className="text-gray-900" href={`/how-it-works`}>
+            How it works
+          </Link>
+          <Link className="shrink-0 px-4 text-gray-900" href={`/movies`}>
             Movies
-          </a>
-          <a className="shrink-0 px-4 text-gray-900" href="/tv-shows">
+          </Link>
+          <Link className="shrink-0 px-4 text-gray-900" href={`/tv-shows`}>
             TV Shows
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
