@@ -1,7 +1,8 @@
-import { Button, Card } from "../components/ui";
 import React from "react";
+import Image from "next/image";
+
+import { Card } from "../components/ui";
 import { Swiper, SwiperSlide } from "swiper/react";
-import HeaderNav from "../components/HeaderNav";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -12,14 +13,15 @@ import { FreeMode, Pagination } from "swiper";
 export default function Home() {
   return (
     <div>
-      <HeaderNav />
       <section>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-            <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
-              <img
+            <div className="relative h-64 overflow-hidden rounded-xl shadow-md sm:h-80 lg:order-last lg:h-full">
+              <Image
                 alt="Party"
-                src="https://m.media-amazon.com/images/M/MV5BOWJmMWRlYTMtMDQ3ZC00ZDI3LWEyNTMtY2FlNDhjODdlMGI0XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX600_.jpg"
+                src="/images/home-image.jpg"
+                width={300}
+                height={300}
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
@@ -92,19 +94,19 @@ export default function Home() {
                 },
               }}
             >
-              <SwiperSlide>
+              <SwiperSlide className="rounded-xl">
                 <Card></Card>
               </SwiperSlide>
-              <SwiperSlide>
+              <SwiperSlide className="rounded-xl">
                 <Card></Card>
               </SwiperSlide>
-              <SwiperSlide>
+              <SwiperSlide className="rounded-xl">
                 <Card></Card>
               </SwiperSlide>
-              <SwiperSlide>
+              <SwiperSlide className="rounded-xl">
                 <Card></Card>
               </SwiperSlide>
-              <SwiperSlide>
+              <SwiperSlide className="rounded-xl">
                 <Card></Card>
               </SwiperSlide>
             </Swiper>

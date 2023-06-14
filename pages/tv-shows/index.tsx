@@ -1,9 +1,6 @@
-import HeaderNav from "@/components/HeaderNav";
-
 const TvShowsPage: React.FC = () => {
   return (
     <div>
-      <HeaderNav />
       <section>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">

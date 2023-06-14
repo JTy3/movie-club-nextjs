@@ -45,7 +45,7 @@ const HeaderNav: React.FC = () => {
             Movies
           </Link>
           <Link className="text-gray-900" href={`/tv-shows`}>
-            TV Shows
+            TV Shows <span className="bg-gray-200 p-1 rounded-xl ms-1 text-xs">Coming Soon</span>
           </Link>
         </nav>
 
