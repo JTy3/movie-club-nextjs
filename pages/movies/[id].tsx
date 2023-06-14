@@ -98,7 +98,8 @@ const MoviePage = () => {
             </div>
           </div>
           <div className="mx-auto max-w-screen-lg">
-            <Swiper
+            {relatedMovies ? (
+              <Swiper
               slidesPerView={1}
               spaceBetween={10}
               freeMode={true}
@@ -140,6 +141,9 @@ const MoviePage = () => {
                 );
               })}
             </Swiper>
+            ) : (
+              <p>Loading related movies...</p>
+            )}
           </div>
         </section>
       ) : (
