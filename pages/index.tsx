@@ -32,10 +32,7 @@ export default function Home() {
               </h2>
 
               <p className="mt-4 text-gray-600">
-                Jake Sully lives with his newfound family formed on the
-                extrasolar moon Pandora. Once a familiar threat returns to
-                finish what was previously started, Jake must work with Neytiri
-                and the army of the Na'vi race to protect their home.
+                Find a movie of the week here. TBC the component.
               </p>
 
               <a

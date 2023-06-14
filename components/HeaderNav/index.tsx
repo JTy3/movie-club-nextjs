@@ -31,9 +31,9 @@ const HeaderNav: React.FC = () => {
           className="hidden items-center justify-center gap-8 text-sm font-medium lg:flex"
         >
           {session ? (
-            <a className="text-gray-900" href="/app">
+            <Link className="text-gray-900" href={`/app`}>
               Dashboard
-            </a>
+            </Link>
           ) : null}
           <Link className="text-gray-900" href={`/`}>
             Home
@@ -65,9 +65,9 @@ const HeaderNav: React.FC = () => {
       <div className="border-t border-gray-100 lg:hidden">
         <nav className="flex items-center justify-center overflow-x-auto p-4 text-sm font-medium">
           {session ? (
-            <a className="shrink-0 px-4 text-gray-900" href="/app">
+            <Link className="shrink-0 px-4 text-gray-900" href={`/app`}>
               Dashboard
-            </a>
+            </Link>
           ) : null}
           <Link className="text-gray-900" href={`/how-it-works`}>
             How it works

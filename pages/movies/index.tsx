@@ -73,7 +73,7 @@ const MoviesPage = () => {
         >
           {movies.map((movie: any) => {
             return (
-              <SwiperSlide className="rounded-xl">
+              <SwiperSlide className="rounded-xl" key={movie.id}>
                 <Link href={`/movies/${movie.id}`} className="bg-yellow-100">
                   <Image
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

@@ -71,7 +71,7 @@ const MoviePage = () => {
                 <div className="flex my-3">
                   {movie.genres.map((genre: any) => {
                     return (
-                      <div className="bg-red-600 text-white px-2 me-3 rounded-3xl">
+                      <div className="bg-red-600 text-white px-2 me-3 rounded-3xl" key={genre.id}>
                         <p>{genre.name}</p>
                       </div>
                     );
@@ -123,7 +123,7 @@ const MoviePage = () => {
             >
               {relatedMovies.map((movie: any) => {
                 return (
-                  <SwiperSlide className="rounded-xl">
+                  <SwiperSlide className="rounded-xl" key={movie.id}>
                     <Link
                       href={`/movies/${movie.id}`}
                       className="bg-yellow-100"
