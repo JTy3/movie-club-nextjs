@@ -1,11 +1,10 @@
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions"] // You won't need this in Prisma 3.X or higher.
+  provider = "prisma-client-js"
 }
 
 model Account {
@@ -55,19 +54,19 @@ model VerificationToken {
 }
 
 model Group {
-  id    String        @id @default(cuid())
-  name  String
-  admin String
-  users UserInGroup[]
+  id        String        @id @default(cuid())
+  name      String
+  createdAt DateTime      @default(now())
+  users     UserInGroup[]
 }
 
 model UserInGroup {
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String 
-  group      Group    @relation(fields: [groupId], references: [id])
-  groupId    String 
-  joinedAt   DateTime @default(now())
-  assignedBy String
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  group    Group    @relation(fields: [groupId], references: [id])
+  groupId  String
+  role     String
+  joinedAt DateTime @default(now())
 
   @@id([userId, groupId])
 }

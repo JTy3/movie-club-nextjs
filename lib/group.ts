@@ -29,4 +29,14 @@ export class GroupService {
       },
     });
   }
+
+  // Helper functions
+  async addUserToGroup(groupId: string, userId: string) {
+    return client.userInGroup.create({
+      data: {
+        userId: userId,
+        groupId: groupId
+      },
+    });
+  }
 }
