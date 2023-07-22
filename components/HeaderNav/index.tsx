@@ -38,14 +38,8 @@ const HeaderNav: React.FC = () => {
           <Link className="text-gray-900" href={`/`}>
             Home
           </Link>
-          <Link className="text-gray-900" href={`/how-it-works`}>
-            How it works
-          </Link>
           <Link className="text-gray-900" href={`/movies`}>
             Movies
-          </Link>
-          <Link className="text-gray-900" href={`/tv-shows`}>
-            TV Shows <span className="bg-gray-200 p-1 rounded-xl ms-1 text-xs">Coming Soon</span>
           </Link>
         </nav>
 
@@ -69,14 +63,8 @@ const HeaderNav: React.FC = () => {
               Dashboard
             </Link>
           ) : null}
-          <Link className="text-gray-900" href={`/how-it-works`}>
-            How it works
-          </Link>
           <Link className="shrink-0 px-4 text-gray-900" href={`/movies`}>
             Movies
-          </Link>
-          <Link className="shrink-0 px-4 text-gray-900" href={`/tv-shows`}>
-            TV Shows
           </Link>
         </nav>
       </div>

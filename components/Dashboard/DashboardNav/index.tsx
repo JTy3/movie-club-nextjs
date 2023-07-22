@@ -23,15 +23,15 @@ const DashboardNav: React.FC = () => {
         <div className="border-t border-gray-100">
           <nav aria-label="Main Nav" className="flex flex-col p-2">
             <div className="py-4">
-              <a
-                href=""
+              <Link
+                href={`/app`}
                 className="t group relative flex justify-center rounded bg-blue-50 px-2 py-1.5 text-blue-700"
               >
                 <HomeIcon className="h-6 w-6" />
                 <span className="absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100">
                   Home
                 </span>
-              </a>
+              </Link>
             </div>
 
             <ul className="space-y-1 border-t border-gray-100 pt-4">
@@ -43,17 +43,6 @@ const DashboardNav: React.FC = () => {
                   <FilmIcon className="h-6 w-6" />
                   <span className="absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100">
                     Movies
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/app/tv-shows`}
-                  className="group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-                >
-                  <TvIcon className="h-6 w-6" />
-                  <span className="absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100">
-                    TV Shows
                   </span>
                 </Link>
               </li>
