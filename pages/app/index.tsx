@@ -10,6 +10,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import { FreeMode, Pagination } from 'swiper';
+import Link from 'next/link';
 
 const Dashboard: React.FC = ({ session, groups }: any) => {
   return (
@@ -47,12 +48,16 @@ const Dashboard: React.FC = ({ session, groups }: any) => {
             {groups.map((group: any) => {
               return (
                 <SwiperSlide>
-                  <p>{group.group.name}</p>
+                  <Card>
+                    <Link href={`/app/groups/${group.group.id}`}>{group.group.name}</Link>
+                  </Card>
                 </SwiperSlide>
               );
             })}
             <SwiperSlide>
-              <Card></Card>
+              <Card>
+                <Link href={`/app/groups/new`}>Create a group</Link>
+              </Card>
             </SwiperSlide>
           </Swiper>
           <hr className="my-12" />
@@ -82,19 +87,9 @@ const Dashboard: React.FC = ({ session, groups }: any) => {
             }}
           >
             <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card></Card>
+              <Card>
+                <Link href={`/app/movies`}>Add a movie</Link>
+              </Card>
             </SwiperSlide>
           </Swiper>
           <hr className="my-12" />

@@ -9,15 +9,16 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const groupService = new GroupService();
-  // const session = await getServerSession(req, res, authOptions);
+  const session = await getServerSession(req, res, authOptions);
 
-  // if (!session) {
-  //   res.status(401);
-  //   return;
-  // }
+  if (!session) {
+    res.status(401);
+    return;
+  }
 
   if (req.method === 'POST') {
-    return res.json(await groupService.createGroup(req.body));
+    const group = await groupService.createGroup(req.body)
+    return res.json(await groupService.addUserToGroup(group.id, session.user?.id as string));
   } else if (req.method === 'PUT') {
     return res.json(await groupService.updateGroup(req.body));
   } else if (req.method === 'DELETE') {
