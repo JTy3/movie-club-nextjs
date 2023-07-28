@@ -92,19 +92,19 @@ export default function Home() {
               }}
             >
               <SwiperSlide className="rounded-xl">
-                <Card></Card>
+                <Card>some content</Card>
               </SwiperSlide>
               <SwiperSlide className="rounded-xl">
-                <Card></Card>
+                <Card>some content</Card>
               </SwiperSlide>
               <SwiperSlide className="rounded-xl">
-                <Card></Card>
+                <Card>some content</Card>
               </SwiperSlide>
               <SwiperSlide className="rounded-xl">
-                <Card></Card>
+                <Card>some content</Card>
               </SwiperSlide>
               <SwiperSlide className="rounded-xl">
-                <Card></Card>
+                <Card>some content</Card>
               </SwiperSlide>
             </Swiper>
           </div>

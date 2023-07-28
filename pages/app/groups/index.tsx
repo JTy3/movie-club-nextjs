@@ -18,7 +18,7 @@ const MyGroupsPage = ({ session, groups }: any) => {
           </h2>
           {groups.map((group: any) => {
             return (
-              <Card>
+              <Card key={group.group.id}>
                 <Link href={`/app/groups/${group.group.id}`}>
                   {group.group.name}
                 </Link>

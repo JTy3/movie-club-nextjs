@@ -47,7 +47,7 @@ const Dashboard: React.FC = ({ session, groups }: any) => {
           >
             {groups.map((group: any) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={group.group.id}>
                   <Card>
                     <Link href={`/app/groups/${group.group.id}`}>{group.group.name}</Link>
                   </Card>
