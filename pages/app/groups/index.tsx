@@ -1,11 +1,26 @@
-import { DashboardNav, Banner } from '@/components/Dashboard';
-import { Card } from '@/components/ui';
-import { GroupService } from '@/lib/group';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import { getServerSession } from 'next-auth';
-import Link from 'next/link';
+import { DashboardNav, Banner } from "@/components/Dashboard";
+import { Card } from "@/components/ui";
+import { GroupService } from "@/lib/group";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import axios from "axios";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
-const MyGroupsPage = ({ session, groups }: any) => {
+const MyGroupsPage = () => {
+  const [groups, setGroups] = useState<any>([]);
+
+  useEffect(() => {
+    const getGroups = async () => {
+      await axios.get(`/api/users/groups`).then((response) => {
+        console.log(response);
+        setGroups(response.data);
+      });
+    };
+
+    getGroups();
+  }, []);
+  
   return (
     <div className="flex">
       <DashboardNav />
@@ -26,9 +41,7 @@ const MyGroupsPage = ({ session, groups }: any) => {
             );
           })}
           <Card>
-            <Link href={`/app/groups/new`}>
-              Create a new group
-            </Link>
+            <Link href={`/app/groups/new`}>Create a new group</Link>
           </Card>
         </div>
       </div>
@@ -42,7 +55,7 @@ export async function getServerSideProps(context: any) {
   if (!session) {
     return {
       redirect: {
-        destination: '/',
+        destination: "/",
         permanent: false,
       },
     };

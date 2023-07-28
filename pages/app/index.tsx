@@ -11,8 +11,23 @@ import 'swiper/css/pagination';
 
 import { FreeMode, Pagination } from 'swiper';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const Dashboard: React.FC = ({ session, groups }: any) => {
+const Dashboard: React.FC = () => {
+  const [groups, setGroups] = useState<any>([]);
+
+  useEffect(() => {
+    const getGroups = async () => {
+      await axios.get(`/api/users/groups`).then((response) => {
+        console.log(response)
+        setGroups(response.data)
+      })
+    }
+
+    getGroups()
+  }, [])
+
   return (
     <div className="flex">
       <DashboardNav />
@@ -45,7 +60,7 @@ const Dashboard: React.FC = ({ session, groups }: any) => {
               },
             }}
           >
-            {groups.map((group: any) => {
+            {groups && groups.map((group: any) => {
               return (
                 <SwiperSlide key={group.group.id}>
                   <Card>
