@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { TMDBService } from "@/lib/tmdb";
+import { GroupService } from "@/lib/group";
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,16 +7,9 @@ export default async function handler(
 ) {
   try {
     const { id } = req.query;
-    const inventoryService = new TMDBService();
-    const data = await inventoryService.getMovieData(id);
-    return res.status(200).json({
-      status: 200,
-      message: `Success`,
-      data,
-    });
+    const groupService = new GroupService();
+    return res.json(await groupService.getGroup(id as string));
   } catch (err: any) {
-    return res.status(500).json({
-      message: err.message,
-    });
+    return res.send(500);
   }
 }

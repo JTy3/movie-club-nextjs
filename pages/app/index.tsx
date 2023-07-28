@@ -1,16 +1,17 @@
-import { Banner, DashboardNav } from "@/components/Dashboard";
-import { useSession, signOut } from "next-auth/react";
-import { Card } from "@/components/ui";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Banner, DashboardNav } from '@/components/Dashboard';
+import { Card } from '@/components/ui';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { getServerSession } from 'next-auth/next';
+import { GroupService } from '@/lib/group';
 
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
-import { FreeMode, Pagination } from "swiper";
+import { FreeMode, Pagination } from 'swiper';
 
-const Dashboard: React.FC = () => {
-  const { data: session } = useSession();
+const Dashboard: React.FC = ({ session, groups }: any) => {
   return (
     <div className="flex">
       <DashboardNav />
@@ -43,25 +44,20 @@ const Dashboard: React.FC = () => {
               },
             }}
           >
-            <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Card></Card>
-            </SwiperSlide>
+            {groups.map((group: any) => {
+              return (
+                <SwiperSlide>
+                  <p>{group.group.name}</p>
+                </SwiperSlide>
+              );
+            })}
             <SwiperSlide>
               <Card></Card>
             </SwiperSlide>
           </Swiper>
           <hr className="my-12" />
           <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
-            Movies
+            Your Watchlist
           </h2>
           <Swiper
             slidesPerView={1}
@@ -107,5 +103,30 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(context: any) {
+  const session = await getServerSession(context.req, context.res, authOptions);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  const groupService = new GroupService();
+  const groups = JSON.parse(
+    JSON.stringify(await groupService.getUserGroups(session.user?.id as string))
+  );
+
+  return {
+    props: {
+      session,
+      groups,
+    },
+  };
+}
 
 export default Dashboard;
