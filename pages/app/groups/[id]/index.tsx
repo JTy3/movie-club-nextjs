@@ -1,8 +1,8 @@
-import { DashboardNav, Banner } from '@/components/Dashboard';
-import { GroupService } from '@/lib/group';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import { getServerSession } from 'next-auth';
-import Link from 'next/link';
+import { DashboardNav, Banner } from "@/components/Dashboard";
+import { GroupService } from "@/lib/group";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
 
 const GroupPage = ({ session, groupInfo }: any) => {
   return (
@@ -10,9 +10,11 @@ const GroupPage = ({ session, groupInfo }: any) => {
       <DashboardNav />
       <div className="w-full">
         <Banner />
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className='mt-4'>
-            <Link className='text-blue-600 underline' href={`/app/groups`}>All Groups</Link>
+        <div className="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
+          <div className="mt-4">
+            <Link className="text-blue-600 underline" href={`/app/groups`}>
+              All Groups
+            </Link>
           </div>
           <hr className="my-8" />
           <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
@@ -39,16 +41,15 @@ export async function getServerSideProps(context: any) {
   if (!session || !id) {
     return {
       redirect: {
-        destination: '/',
+        destination: "/",
         permanent: false,
       },
     };
   }
 
   const groupService = new GroupService();
-  const groupInfo = JSON.parse(
-    JSON.stringify(await groupService.getGroup(id as string))
-  );
+  let groupInfo = await groupService.getGroup(id as string);
+  groupInfo = JSON.parse(JSON.stringify(groupInfo));
 
   return {
     props: {

@@ -7,7 +7,7 @@ const HeaderNav: React.FC = () => {
   const { data: session } = useSession();
 
   return (
-    <header aria-label="Site Header" className="shadow-sm">
+    <header aria-label="Site Header" className="shadow-sm border-b">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
         <div className="flex w-0 flex-1 lg:hidden">
           <button

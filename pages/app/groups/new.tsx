@@ -23,7 +23,7 @@ const MyGroupsPage = ({ session, groups }: any) => {
       <DashboardNav />
       <div className="w-full">
         <Banner />
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
           <div className="mt-4">
             <Link className="text-blue-600 underline" href={`/app/groups`}>
               All Groups
