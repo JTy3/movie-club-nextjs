@@ -1,4 +1,4 @@
-import client from './prismadb';
+import client from "./prismadb";
 
 export class UserService {
   // Get User
@@ -7,7 +7,7 @@ export class UserService {
 
   // Update User
   async updateUser(data: any) {
-    await client.user.update({
+    return await client.user.update({
       data: data,
       where: {
         id: data.id,
@@ -16,4 +16,9 @@ export class UserService {
   }
 
   // Remove User
+
+  // Get all users
+  async getUsers() {
+    return await client.user.findMany();
+  }
 }

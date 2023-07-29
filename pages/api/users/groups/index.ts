@@ -19,8 +19,8 @@ export default async function handler(
   if (req.method === "POST") {
     return res.json(
       await groupService.addUserToGroup(
-        req.query.groupId as string,
-        req.query.userId as string
+        req.body.groupId as string,
+        req.body.userId as string
       )
     );
   } else if (req.method === "GET") {

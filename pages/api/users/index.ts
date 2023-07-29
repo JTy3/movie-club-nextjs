@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { UserService } from '@/lib/user';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]';
+import type { NextApiRequest, NextApiResponse } from "next";
+import { UserService } from "@/lib/user";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,8 +16,10 @@ export default async function handler(
     return;
   }
 
-  if (req.method === 'PUT') {
+  if (req.method === "PUT") {
     return res.json(await userService.updateUser(req.body));
+  } else if (req.method === "GET") {
+    return res.json(await userService.getUsers());
   } else {
     return res.send(405);
   }
