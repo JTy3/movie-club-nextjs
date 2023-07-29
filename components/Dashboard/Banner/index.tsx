@@ -38,18 +38,6 @@ const Banner: React.FC = () => {
               <BellIcon className="h-6 w-6" />
             </a>
           </div>
-
-          <span
-            aria-hidden="true"
-            className="block h-6 w-px rounded-full bg-gray-200"
-          ></span>
-
-          <a href="#" className="block shrink-0">
-            <span className="sr-only">Profile</span>
-            <span className="grid h-10 w-10 place-content-center rounded-full bg-white text-xs text-gray-600">
-              {session?.user?.name?.charAt(0)}
-            </span>
-          </a>
         </div>
 
         <div className="mt-8">

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+    color: blue;
+}
+
 .swiper {
     width: 100%;
     height: 100%;

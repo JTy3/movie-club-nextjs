@@ -1,4 +1,4 @@
-import client from './prismadb';
+import client from "./prismadb";
 
 export class GroupService {
   // Create a group - @TODO - make this more robust i.e: don't throw anything in there
@@ -8,7 +8,16 @@ export class GroupService {
 
   // Get a group
   async getGroup(groupId: string) {
-    return client.group.findUnique({ where: { id: groupId } });
+    return client.group.findUnique({
+      where: { id: groupId },
+      include: {
+        users: {
+          include: {
+            user: true
+          }
+        },
+      },
+    });
   }
 
   // Update a group
@@ -45,9 +54,9 @@ export class GroupService {
     return client.userInGroup.update({
       data: data,
       where: {
-        userId_groupId: data.userId + data.groupId
-      }
-    })
+        userId_groupId: data.userId + data.groupId,
+      },
+    });
   }
 
   async getUserGroups(userId: string) {
@@ -56,8 +65,8 @@ export class GroupService {
         userId: userId,
       },
       select: {
-        group: true
-      }
+        group: true,
+      },
     });
   }
 }

@@ -35,9 +35,6 @@ const HeaderNav: React.FC = () => {
               Dashboard
             </Link>
           ) : null}
-          <Link className="text-gray-900" href={`/`}>
-            Home
-          </Link>
           <Link className="text-gray-900" href={`/movies`}>
             Movies
           </Link>
