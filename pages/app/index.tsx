@@ -16,16 +16,23 @@ import axios from 'axios';
 
 const Dashboard: React.FC = () => {
   const [groups, setGroups] = useState<any>([]);
+  const [watchlist, setWatchlist] = useState<any>([]);
 
   useEffect(() => {
     const getGroups = async () => {
       await axios.get(`/api/users/groups`).then((response) => {
-        console.log(response)
         setGroups(response.data)
       })
     }
 
+    const getWatchlist = async () => {
+      await axios.get(`/api/users/movies`).then((response) => {
+        setWatchlist(response.data)
+      })
+    }
+
     getGroups()
+    getWatchlist()
   }, [])
 
   return (
@@ -101,6 +108,15 @@ const Dashboard: React.FC = () => {
               },
             }}
           >
+            {watchlist && watchlist.map((movie: any) => {
+              return (
+                <SwiperSlide key={movie.movie.id}>
+                  <Card>
+                    <Link href={`/app/movies/${movie.movie.id}`}>{movie.movie.title}</Link>
+                  </Card>
+                </SwiperSlide>
+              );
+            })}
             <SwiperSlide>
               <Card>
                 <Link href={`/app/movies`}>Add a movie</Link>
