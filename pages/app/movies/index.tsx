@@ -28,7 +28,7 @@ const MyMoviesPage = () => {
         <div className="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
           <hr className="my-12" />
           <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
-            Your Groups
+            Your Watchlist
           </h2>
           {watchlist.map((movie: any) => {
             return (
@@ -40,7 +40,7 @@ const MyMoviesPage = () => {
             );
           })}
           <Card>
-            <Link href={`/app/groups/new`}>Create a new group</Link>
+            <Link href={`/movies`}>Add to watchlist</Link>
           </Card>
         </div>
       </div>

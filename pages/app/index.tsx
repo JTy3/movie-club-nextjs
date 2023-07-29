@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
       <DashboardNav />
       <div className="w-full">
         <Banner />
-        <div className="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <hr className="my-12" />
           <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
             Groups
@@ -53,7 +53,7 @@ const Dashboard: React.FC = () => {
               clickable: true,
             }}
             modules={[FreeMode, Pagination]}
-            className="mySwiper"
+            className={`mySwiper max-w-[250px] sm:max-w-none`}
             breakpoints={{
               // when window width is >= 480px
               640: {
@@ -94,7 +94,7 @@ const Dashboard: React.FC = () => {
               clickable: true,
             }}
             modules={[FreeMode, Pagination]}
-            className="mySwiper"
+            className={`mySwiper max-w-[250px] sm:max-w-none`}
             breakpoints={{
               // when window width is >= 480px
               640: {
@@ -129,30 +129,5 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
-
-export async function getServerSideProps(context: any) {
-  const session = await getServerSession(context.req, context.res, authOptions);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-
-  const groupService = new GroupService();
-  const groups = JSON.parse(
-    JSON.stringify(await groupService.getUserGroups(session.user?.id as string))
-  );
-
-  return {
-    props: {
-      session,
-      groups,
-    },
-  };
-}
 
 export default Dashboard;
